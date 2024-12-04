@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Listar Mascotas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mascotas Registradas</ion-card-title>
+    </ion-card-header>
+
+    <!-- Lista de mascotas -->
+    <ion-card-content>
+      <ion-list>
+        <!-- Iteración sobre las mascotas -->
+        <ion-item *ngFor="let mascota of mascotas; let i = index" lines="full" detail="false">
+          <ion-thumbnail slot="start">
+            <!-- Aseguramos que la imagen tenga un tamaño adecuado -->
+            <img [src]="mascota.imagen" alt="" style="width: 80px; height: 80px; object-fit: cover;">
+          </ion-thumbnail>
+
+          <ion-label style="flex-grow: 1;">
+            <h3><strong>{{mascota.nombre}}</strong></h3>
+            <p>{{mascota.especie}} - {{mascota.raza}}</p>
+            <p>{{mascota.sexo}} de {{mascota.edad}} años</p>
+          </ion-label>
+
+          <!-- Botón eliminar -->
+          <ion-button color="warning" (click)="eliminarMascotas(i)" shape="round" fill="outline">
+            Eliminar
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botones flotantes para agregar mascota o ir a una random -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="goToRandom()">
+      <ion-icon name="paw-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToCreate()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

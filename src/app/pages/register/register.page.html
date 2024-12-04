@@ -1,0 +1,117 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col size="12">
+      <ion-card>
+
+        <!-- <img src="" alt=""> -->
+
+        <ion-card-header>
+          <ion-card-title>Registrarme</ion-card-title>
+          <ion-card-subtitle>Ingrese sus credenciales para revisar sus mascotas</ion-card-subtitle>
+        </ion-card-header>
+        
+        
+        <ion-card-content>
+          
+          <form #loginForm="ngForm">
+            
+            
+            <ion-input
+              [(ngModel)]="firstName"
+              name="firstName"
+              label="Nombre"
+              label-placement="floating"
+              fill="outline"
+              placeholder="Nombre"
+              required>
+            </ion-input>
+            <ion-text color="danger" *ngIf="loginForm.controls['firstName']?.invalid && loginForm.controls['firstName']?.touched">
+              <small *ngIf="loginForm.controls['firstName']?.hasError('required')">*El nombre es obligatorio</small>
+            </ion-text>
+            <br>
+
+            <ion-input
+            [(ngModel)]="lastName"
+            name="lastName"
+            label="Apellido"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Apellido"
+            required>
+            </ion-input>
+            <ion-text color="danger" *ngIf="loginForm.controls['lastName']?.invalid && loginForm.controls['lastName']?.touched">
+              <small *ngIf="loginForm.controls['lastName']?.hasError('required')">*El apellido es obligatorio</small>
+            </ion-text>
+            <br>
+
+            <ion-input 
+            [(ngModel)]="email"
+            name="email"
+            label="Correo"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Correo"
+            required
+            email>
+            </ion-input>
+
+            <ion-text color="danger" *ngIf="loginForm.controls['email']?.invalid && loginForm.controls['email']?.touched">
+              <small *ngIf="loginForm.controls['email']?.hasError('required')">*El correo es obligatorio</small>
+              <small *ngIf="loginForm.controls['email']?.hasError('email')">*Formato de correo inválido</small>
+            </ion-text>
+          
+            <br>
+
+            <ion-input
+            [(ngModel)]="password"
+            name="password"
+            label-placement="floating"
+            fill="outline"
+            type="password"
+            label="Contraseña"
+            required
+            minlength="8">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>          
+          </ion-input>
+
+          <ion-text color="danger" *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched">
+            <small *ngIf="loginForm.controls['password']?.hasError('required')">*La contraseña es obligatoria</small>
+            <small *ngIf="loginForm.controls['password']?.hasError('minlength')">*La contraseña debe tener al menos 8 carácteres</small>
+          </ion-text>
+
+          <br>
+
+          <ion-input
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          label-placement="floating"
+          fill="outline"
+          type="password"
+          label="Repetir Contraseña"
+          required
+          minlength="8">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+
+          <ion-text color="danger" *ngIf="confirmPassword !== password && confirmPassword && loginForm.controls['confirmPassword']?.touched">
+            <small>Las contraseñas deben coincidir</small>
+          </ion-text>
+
+          <br>
+
+
+          <ion-button expand="block" [disabled]="loginForm.invalid || confirmPassword !== password" (click)="goToLogin()">Registrarme</ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+

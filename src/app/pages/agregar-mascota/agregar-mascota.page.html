@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Agrega una nueva mascota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+
+  <!-- FORMULARIO PARA REGISTRAR UNA NUEVA MASCOTA -->
+  <form #mascotaForm="ngForm" (ngSubmit)="onSubmit(mascotaForm)">
+
+    <!-- Campo nombre mascota -->
+    <ion-input label="Nombre" label-placement="floating" fill="outline" placeholder="Nombre"
+      [(ngModel)]="mascotaNombre" name="mascotaNombre" required></ion-input>
+    <br>
+    <div *ngIf="mascotaNombre && mascotaNombre.length === 0" class="error-message">Nombre de mascota obligatorio.</div>
+    <!-- Campo especie mascota -->
+    <ion-input label="Especie " label-placement="floating" fill="outline" placeholder="Especie"
+      [(ngModel)]="mascotaEspecie" name="mascotaEspecie" required></ion-input>
+    <br>
+    <div *ngIf="mascotaEspecie && mascotaEspecie.length === 0" class="error-message">Especie de mascota obligatorio.
+    </div>
+    <!-- Campo raza mascota -->
+    <ion-input label="Raza" label-placement="floating" fill="outline" placeholder="Raza"
+      [(ngModel)]="mascotaRaza" name="mascotaRaza" required></ion-input>
+    <br>
+    <div *ngIf="mascotaRaza && mascotaRaza.length === 0" class="error-message">Raza de mascota obligatorio.</div>
+    <!-- Campo edad mascota -->
+    <ion-input label="Edad" label-placement="floating" fill="outline" placeholder="Edad"
+      [(ngModel)]="mascotaEdad" name="mascotaEdad" required></ion-input>
+    <br>
+    <div *ngIf="mascotaEdad && mascotaEdad.length === 0" class="error-message">Edad de mascota obligatorio.</div>
+    <!-- Campo sexo   -->
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select [(ngModel)]="mascotaSexo" name="sexo" placeholder="Selecciona el sexo">
+        <ion-select-option value="Macho">Macho</ion-select-option>
+        <ion-select-option value="Hembra">Hembra</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+    <!-- Capturar foto y geolocalización -->
+     <ion-card *ngIf="photo">
+      <ion-img [src]="photo"></ion-img>
+     </ion-card>
+
+     <ion-card *ngIf="location">
+      <ion-card-header>
+        <ion-card-title>Ubicación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      <p>Latitud: {{location.latitude}}</p>
+      <p>Longitud: {{location.longitude}}</p>
+      <p>Dirección: {{address}}</p>
+      </ion-card-content>
+     </ion-card>
+
+ 
+    <!-- BOTÓN PARA CAPTURAR FOTO Y OBTENER UBICACIÓN -->
+    <ion-button expand="block" (click)="capturePhoto()">Tomar foto y obtener ubicación</ion-button><br>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- BOTONES DE NAVEGACIÓN -->
+  <!-- Botón para ir a listar mascotas -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="goToRandom()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- Botón en desuso -->
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToCreate()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+   -->
+
+
+</ion-content>

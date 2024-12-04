@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>agregar-mascota</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title>Registrar una nueva mascota</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <br>
+    <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="animal.nombre" name="nombre" required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Especie</ion-label>
+        <ion-input [(ngModel)]="animal.especie" name="especie" required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Raza</ion-label>
+        <ion-input [(ngModel)]="animal.raza" name="raza"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input [(ngModel)]="animal.edad" name="edad" type="number"></ion-input>
+    </ion-item>
+
+    <!-- Campo de selección para el sexo del animal -->
+    <ion-item>
+        <ion-label>Sexo</ion-label>
+        <ion-select [(ngModel)]="animal.sexo" name="sexo" placeholder="Selecciona el sexo">
+            <ion-select-option value="Macho">Macho</ion-select-option>
+            <ion-select-option value="Hembra">Hembra</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <!-- Campo de entrada para alergias -->
+    <ion-item>
+        <ion-label position="floating">Alergias</ion-label>
+        <ion-textarea [(ngModel)]="animal.alergias" name="alergias"></ion-textarea>
+    </ion-item>
+
+    <ion-button (click)="goToListar()">Enviar</ion-button>
+
+    <ion-button expand="block">Tomar foto y obtener ubicación</ion-button>
+    <br>
+</ion-content>

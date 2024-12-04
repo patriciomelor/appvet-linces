@@ -1,0 +1,7 @@
+{
+  "name": "crud-proyecto-linces70",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

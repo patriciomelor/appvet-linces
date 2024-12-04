@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="mascota">
+    <ion-card-header>
+      <!-- Muestra el nombre de la mascota -->
+      <ion-card-title>{{mascota.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Verifica si la URL de la imagen está presente y la muestra -->
+      <ion-img src="{{mascota.imagen}}"></ion-img>
+
+      <br>
+      <p><strong>Especie:</strong> {{mascota.especie}}</p>
+      <p><strong>Raza:</strong> {{mascota.raza}}</p>
+      <p><strong>Edad:</strong> {{mascota.edad}}</p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="goToListar()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
