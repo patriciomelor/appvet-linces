@@ -11,7 +11,7 @@ $RECYCLE.BIN/
 *.log
 log.txt
 
-
+##Hola esto es un comentario
 /.sourcemaps
 /.versions
 /coverage
