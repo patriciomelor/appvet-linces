@@ -32,7 +32,7 @@ mascota:any
 async startShakeDetection(){
   await Motion.addListener('accel',async (event) =>{
     console.log("TEST MOTION")
-    const threshold = -1
+    const threshold = 10
     if(
       Math.abs(event.acceleration.x) > threshold &&
       Math.abs(event.acceleration.y) > threshold &&
